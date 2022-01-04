@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE bookstore [ 
+<!ELEMENT bookstore (book+)>
+<!ELEMENT book (title,author,ISBN,publisher,edition,price)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT ISBN (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+<!ELEMENT edition (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+]>
+
+<bookstore>
+    <book>
+        <title>web programming</title>
+        <author>chrisbates</author>
+        <ISBN>123-456-789</ISBN>
+        <publisher>wiley</publisher>
+        <edition>3</edition>
+        <price>450</price>
+    </book>
+    <book>
+        <title>CN</title>
+        <author>ram</author>
+        <ISBN>123-456-781</ISBN>
+        <publisher>person</publisher>
+        <edition>3</edition>
+        <price>762</price>
+    </book>
+    <book>
+        <title>MPMC</title>
+        <author>stphen</author>
+        <ISBN>123-456-781</ISBN>
+        <publisher>person</publisher>
+        <edition>31</edition>
+        <price>237</price>
+    </book>
+    <book>
+        <title>ST</title>
+        <author>jhon</author>
+        <ISBN>123-456-781</ISBN>
+        <publisher>person</publisher>
+        <edition>3</edition>
+        <price>324</price>
+    </book>
+</bookstore> 

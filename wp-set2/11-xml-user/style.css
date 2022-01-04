@@ -1,0 +1,39 @@
+.container {
+    position: relative;
+    top: 10%;
+    left: 40%;
+   }
+   #btn {
+    margin-left: 65px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: small;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    transition: 0.2s;
+   }
+   #btn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+   }
+   h2 {
+    margin-left: 45px;
+   }
+   input {
+    padding: 25px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border: 0px;
+    box-shadow: 0px 0px 10px 8px rgb(238, 238, 238);
+   }
+   input:focus {
+    background-color: white;
+    outline: none;
+   }
+   #result {
+    margin-left: 30%;
+    margin-top: 80px;
+   }

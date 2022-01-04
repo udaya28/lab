@@ -1,0 +1,112 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js">
+    </script>
+    <style type="text/css">
+        .bar {
+            background-color: #5c9bb7;
+            background-image: -webkit-linear-gradient(top, #5c9bb7, #5392ad);
+            background-image: -moz-linear-gradient(top, #5c9bb7, #5392ad);
+            background-image: linear-gradient(top, #5c9bb7, #5392ad);
+            box-shadow: 0 1px 1px #ccc;
+            border-radius: 2px;
+            width: 580px;
+            padding: 10px;
+            margin: 45px auto 25px;
+            position: relative;
+            text-align: right;
+            line-height: 1;
+        }
+
+        .bar a {
+            background: #4987a1 center center no-repeat;
+            width: 32px;
+            height: 32px;
+            display: inline-block;
+            text-decoration: none !important;
+            margin-right: 5px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .bar a.active {
+            background-color: #c14694;
+        }
+
+        /*------List layout------*/
+        ul.list {
+            list-style: none;
+            width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        ul.list li {
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        ul.list li img {
+            float: left;
+            border: none;
+        }
+
+        ul.list li p {
+            margin-left: 135px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /*------Grid layout------*/
+        ul.grid {
+            list-style: none;
+            width: 570px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        ul.grid li {
+            padding: 10px;
+            float: left;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <div class="bar">
+            <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"> </a><a
+                class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"> </a>
+        </div>
+        <ul ng-show="layout == 'grid'" class="grid">
+            <li ng-repeat="data in Data">
+                <p>{{data.Name}}</p>
+            </li>
+        </ul>
+        <ul ng-show="layout == 'list'" class="list">
+            <li ng-repeat="data in Data">
+                <p>{{data.Name}}</p>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app = angular.module("MyApp", []);
+        app.controller("MyController", function ($scope) {
+            $scope.layout = 'grid';
+            $scope.Data = [
+                { Name: "Desert" },
+                { Name: "Hydrangeas" },
+                { Name: "Jellyfish" },
+                { Name: "Koala" },
+                { Name: "Lighthouse" },
+                { Name: "Penguins" },
+                { Name: "Tulips" }];
+        }); 
+    </script>
+</body>
+
+</html>

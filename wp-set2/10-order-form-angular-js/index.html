@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price Per Item</th>
+                <th>Total Price</th>
+                <th>Add Item</th>
+                <th>Remove Item</th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>Rs.{{product.price}}</td>
+                <td>Rs.{{product.quantity*product.price}}</td>
+                <td><button class="btnbtn-primary" ng-click="add(product)"> ADD</button></td>
+                <td><button class="btnbtn-danger" ng-click="remove(product)">REMOVE</button></td>
+            </tr>
+        </table>
+        <h2>Total Price: {{totalPrice}}</h2>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.products = [
+                {
+                    name: "Miranda",
+                    quantity: 0,
+                    price: 100
+                },
+                {
+                    name: "Pepsi",
+                    quantity: 0,
+                    price: 75
+                },
+                {
+                    name: "Fanta",
+                    quantity: 0,
+                    price: 85
+                },
+                {
+                    name: "Fizz",
+                    quantity: 0,
+                    price: 80
+                },
+            ]
+            $scope.totalPrice = 0
+            $scope.add = (product) => {
+                if (product.quantity >= 0) {
+                    product.quantity++;
+                    $scope.totalPrice = $scope.totalPrice + product.price
+                }
+            }
+            $scope.remove = (product) => {
+                if (product.quantity > 0) {
+                    product.quantity--;
+                    $scope.totalPrice = $scope.totalPrice - product.price
+                }
+            }
+        }); 
+    </script>
+</body>
+
+</html>

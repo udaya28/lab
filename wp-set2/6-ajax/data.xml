@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userlist>
+    <user>
+        <userid>1</userid>
+        <fname>Gouse</fname>
+        <sname>DSNR</sname>
+        <balance>8801550101</balance>
+    </user>
+    <user>
+        <userid>2</userid>
+        <fname>D Divakar</fname>
+        <sname>Ameerpet</sname>
+        <balance>9888888888</balance>
+    </user>
+    <user>
+        <userid>3</userid>
+        <fname>Rajinth</fname>
+        <sname>SR Nagar</sname>
+        <balance>9866666666</balance>
+    </user>
+</userlist> 
