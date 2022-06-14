@@ -1,0 +1,82 @@
+activity_main.xml:
+
+<RelativeLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+</RelativeLayout>
+strings.xml:	
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">Menu</string>
+	<string name="strFile">File</string>
+<string name="strNew">New</string>
+<string name="strOpen">Open</string>
+</resources>
+
+
+main.xml:
+
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item
+	android:id="@+id/filemenu"
+	android:orderInCategory="1"
+	android:showAsAction="never"
+	android:title="@string/strFile">
+	<menu>
+	<item
+	android:id="@+id/newmenu"
+	android:orderInCategory="1"
+	android:showAsAction="never"
+	android:title="@string/strNew"/>
+	<item
+	android:id="@+id/openmenu"
+	android:orderInCategory="2"
+	android:showAsAction="never"
+	android:title="@string/strOpen"/>
+	</menu>	
+	</item>
+</menu>
+
+
+MainActivity.java:
+
+package com.madlab.menu;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+	public booleanonCreateOptionsMenu(Menu menu) {
+	MenuInflater inflater = getMenuInflater();
+	inflater.inflate(R.menu.main, menu);
+	return true;
+	}
+
+    @Override 
+		public booleanonOptionsItemSelected(MenuItem item) { 
+		switch (item.getItemId()){ 
+		case R.id.newmenu: 
+		    Toast.makeText(getApplicationContext(),"New File Menu is Selected",Toast.LENGTH_LONG).show(); 
+		    return true; 
+		case R.id.openmenu: 
+		    Toast.makeText(getApplicationContext(),"Open File Menu is Selected",Toast.LENGTH_LONG).show(); 
+		    return true; 
+		default: 
+		return super.onOptionsItemSelected(item); 
+	} 
+	}
+}

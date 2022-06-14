@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".activity_result">
+
+
+<TextView
+android:id="@+id/result_TeamA"
+android:layout_width="182dp"
+android:layout_height="70dp"
+android:layout_marginStart="16dp"
+android:layout_marginTop="28dp"
+android:text="@string/team_a"
+android:textSize="50sp"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+android:id="@+id/result_TeamB"
+android:layout_width="182dp"
+android:layout_height="70dp"
+android:layout_marginStart="16dp"
+android:layout_marginTop="68dp"
+android:text="@string/team_b"
+android:textSize="50sp"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toBottomOf="@+id/result_TeamA" />
+
+<TextView
+android:id="@+id/result_TeamAscore"
+android:layout_width="151dp"
+android:layout_height="61dp"
+android:layout_marginStart="40dp"
+android:layout_marginTop="28dp"
+android:text="@string/score_a"
+android:textAlignment="center"
+android:textSize="50sp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toEndOf="@+id/result_TeamA"
+app:layout_constraintTop_toTopOf="parent"
+tools:ignore="MissingConstraints" />
+
+<TextView
+android:id="@+id/result_TeamBscore"
+android:layout_width="150dp"
+android:layout_height="72dp"
+android:layout_marginStart="32dp"
+android:layout_marginTop="72dp"
+android:text="@string/score_b"
+android:textAlignment="center"
+android:textSize="50sp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.258"
+app:layout_constraintStart_toEndOf="@+id/result_TeamB"
+app:layout_constraintTop_toBottomOf="@+id/result_TeamAscore" />
+
+<TextView
+android:id="@+id/result_ResultString"
+android:layout_width="match_parent"
+android:layout_height="153dp"
+android:layout_marginTop="336dp"
+android:text="@string/result_page"
+android:textAlignment="center"
+android:textSize="40sp"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+tools:ignore="InvalidId,MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+package com.example.scoreboard;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView score1;
+    private TextView score2;
+    private int s1 = 0, s2 = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        TextViewToNumber();
+        addListenerOnButton();
+        Reset();
+    }
+
+    private void Reset() {
+        Button reset = findViewById(R.id.reset_button);
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                s1 = 0;
+                s2 = 0;
+                score1.setText(String.valueOf(s1));
+                score2.setText(String.valueOf(s2));
+            }
+        });
+    }
+
+    private void TextViewToNumber() {
+        score1 = findViewById(R.id.Score1);
+        score2 = findViewById((R.id.score2));
+        s1 = Integer.parseInt(score1.getText().toString());
+        s2 = Integer.parseInt(score2.getText().toString());
+    }
+
+    public void CallResultActivity() {
+        Intent intent = new Intent(this, activity_result.class);
+        intent.putExtra("Ascore", s1);
+        intent.putExtra("Bscore", s2);
+        startActivity(intent);
+    }
+
+    private void addListenerOnButton() {
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        Button result_button = findViewById(R.id.button_result);
+        button1.setOnClickListener(view -> {
+            s1 = s1 + 1;
+            score1.setText(String.valueOf(s1));
+        });
+        button2.setOnClickListener(view -> {
+            s2 = s2 + 1;
+            score2.setText(String.valueOf(s2));
+        });
+        // result_button.setOnClickListener(view ->CallResultActivity());
+        result_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CallResultActivity();
+            }
+        });
+    }
+}

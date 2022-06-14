@@ -1,0 +1,187 @@
+Activity_main.xml
+
+<LinearLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:orientation="vertical"
+tools:context=".MainActivity">
+
+<androidx.cardview.widget.CardView
+android:id="@+id/history"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="10dp"
+app:cardBackgroundColor="@color/purple_700">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Erode History"
+android:padding="30dp"
+android:textSize="25dp"
+android:textColor="@color/white"
+android:layout_gravity="center"/>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+android:id="@+id/shopping"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="10dp"
+app:cardBackgroundColor="@color/purple_700">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Shopping Places"
+android:padding="30dp"
+android:textSize="25dp"
+android:textColor="@color/white"
+android:layout_gravity="center"/>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+android:id="@+id/restarunts"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="10dp"
+app:cardBackgroundColor="@color/purple_700">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Famous Restaurants"
+android:padding="30dp"
+android:textSize="25dp"
+android:textColor="@color/white"
+android:layout_gravity="center"/>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+android:id="@+id/park"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="10dp"
+app:cardBackgroundColor="@color/purple_700">
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Famous Parks"
+android:padding="30dp"
+android:textSize="25dp"
+android:textColor="@color/white"
+android:layout_gravity="center"/>
+</androidx.cardview.widget.CardView>
+
+</LinearLayout>
+
+MainActivity.java
+
+package com.madlab.tour;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.app.Activity;
+
+import androidx.cardview.widget.CardView;
+
+public class MainActivity extends Activity {
+
+CardViewhistory,shopping,park,restaurant;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+
+        history = findViewById(R.id.history);
+        restaurant = findViewById(R.id.restarunts);
+        park = findViewById(R.id.park);
+        shopping = findViewById(R.id.shopping);
+
+history.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+intent.putExtra("text",getResources().getString(R.string.history));
+startActivity(intent);
+            }
+        });
+restaurant.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+intent.putExtra("text",getResources().getString(R.string.restaurant));
+startActivity(intent);
+            }
+        });
+park.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+intent.putExtra("text",getResources().getString(R.string.park));
+startActivity(intent);
+            }
+        });
+shopping.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+intent.putExtra("text",getResources().getString(R.string.shopping));
+startActivity(intent);
+            }
+        });
+
+
+    }
+}
+
+Activtiy_second.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="center"
+tools:context=".SecondActivity">
+
+<TextView
+android:id="@+id/text"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+SecondActivity.java
+package com.madlab.tour;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+import org.w3c.dom.Text;
+
+public class SecondActivity extends AppCompatActivity {
+
+TextViewtextView;
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_second);
+       Intent intent = getIntent();
+textView = findViewById(R.id.text);
+textView.setText(intent.getExtras().getString("text"));
+  } }
+
+Strings.xml
+
+<resources>
+<string name="app_name">Tour Guide</string>
+<string name="history">Erode District was a part of Coimbatore has its history intervened with that of Coimbatore and because of its close linkage with the erstwhile Coimbatore district. It is very difficult to separately deal with the history of Erode region. Together with the area comprised in the Coimbatore district, it formed part of the ancient Kongu region. It is found that in the early days, this area was occupied by tribes, most prominent among them being the “Kosars” reportedly having their headquarters at ‘Kosamputhur’ which is believed to have in due course become Coimbatore. </string>
+<string name="park">pannirSelvam park VOC Park</string>
+<string name="shopping">Reliance Mall</string>
+<string name="restaurant">Kfc , Star Briyani</string>
+
+</resources

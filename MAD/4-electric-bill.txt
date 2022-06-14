@@ -1,0 +1,114 @@
+<RelativeLayoutxmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity" >
+
+<TextView
+android:id="@+id/tvTitle"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="50dp"
+android:text="Eb Bill Calculator"
+android:textColor="@color/purple_700"
+android:textSize="20sp" />
+
+<TextView
+android:id="@+id/tvUnits"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/tvTitle"
+android:layout_marginLeft="15dp"
+android:layout_marginTop="50dp"
+android:text="Units Consumed" />
+
+<TextView
+android:id="@+id/tvMobNo"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/tvUnits"
+android:layout_marginLeft="15dp"
+android:layout_marginTop="50dp"
+android:text="MobileNumber" />
+
+<EditText
+android:id="@+id/etUnitsCon"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignBaseline="@+id/tvUnits"
+android:layout_alignLeft="@+id/btnCalculate"
+android:layout_marginLeft="20dp"
+android:ems="10"
+android:inputType="number" >
+<requestFocus />
+</EditText>
+
+<EditText
+android:id="@+id/etMobNo"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignBaseline="@+id/tvMobNo"
+android:layout_alignLeft="@+id/btnCalculate"
+android:layout_marginLeft="20dp"
+android:ems="10"
+android:inputType="number" />
+
+<Button
+android:id="@+id/btnCalculate"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_below="@+id/tvMobNo"
+android:layout_centerHorizontal="true"
+android:layout_marginTop="50dp"
+android:text="Calculate" />
+
+</RelativeLayout>
+
+
+package com.madlab.ebbill;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.app.Activity;
+
+public class MainActivity extends Activity {
+    EditText et1, et2;
+    Button b1;
+    String s1, s2;
+    Double units, bill_amount;
+    android.telephony.SmsManager manager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        et1 = (EditText) findViewById(R.id.etUnitsCon);
+        et2 = (EditText) findViewById(R.id.etMobNo);
+        b1 = (Button) findViewById(R.id.btnCalculate);
+        b1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                s1 = et1.getText().toString();
+                s2 = et2.getText().toString();
+                units = Double.parseDouble(s1);
+                if (units <= 100) {
+                    bill_amount = 0.00;
+                } else if (units <= 200) {
+                    bill_amount = (units - 100) * 1.50;
+                } else if (units <= 500) {
+                    bill_amount = 100 * 2.00 + (units - 200) * 3.00;
+                } else if (units > 500) {
+                    bill_amount = 100 * 3.50 + 300 * 4.60 + (units - 500) * 6.60;
+                }
+                Toast.makeText(getApplicationContext(), "The bill amount is " +
+                        bill_amount, Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+}
