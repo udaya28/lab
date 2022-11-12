@@ -1,0 +1,39 @@
+EX. NO: 07
+
+WORKING WITH NET STUMBLER TO PERFORM WIRELESS AUDIT ON A ROUTER
+AIM:
+
+To perform wireless audit on an access point or a router and decrypt WEP and WPA (Net Stumbler).
+
+INTRODUCTION:
+
+NET STUMBLER:
+
+NetStumbler (Network Stumbler) is one of the Wi-Fi hacking tool which only compatible with windows, this tool also a freeware. With this program, we can search for wireless network which open and infiltrate the network. Its having some compatibility and network adapter issues. NetStumbler is a tool for Windows that allows you to detect Wireless Local Area Networks (WLANs) using 802.11b, 802.11a and 802.11g. It runs on Microsoft Windows operating systems from Windows 2000 to Windows XP. A trimmed-down version called MiniStumbler is available for the handheld Windows CE operating system.
+It has many uses:
+✓	Verify that your network is set up the way you intended
+✓	Find locations with poor coverage in your WLAN.
+✓	Detect other networks that may be causing interference on your network
+✓	Detect unauthorized "rogue" access points in your workplace
+✓	Help aim directional antennas for long-haul WLAN links.
+✓	Use it recreationally for WarDriving.
+
+PROCEDURE:
+
+STEP-1: Download and install Netstumbler.
+STEP-2: It is highly recommended that the PC should have wireless network card in order to access wireless router.
+STEP-3: Now Run Netstumbler in record mode and configure wireless card.
+STEP-4: There are several indicators regarding the strength of the signal, such as GREEN indicates Strong, YELLOW and other color indicates a weaker signal, RED indicates a very weak and GREY indicates a signal loss.
+STEP-5: Lock symbol with GREEN bubble indicates the Access point has encryption enabled.
+STEP-6: MAC assigned to Wireless Access Point is displayed on right hand pane.
+STEP-7: The next column displays the Access points Service Set Identifier[SSID] which is useful to crack the password.
+STEP-8: To decrypt use WireShark tool by selecting Edit 🡪 preferences 🡪 IEEE 802.11.
+STEP-9: Enter the WEP keys as a string of hexadecimal numbers as A1B2C3D4E5.
+
+
+Adding Keys: Wireless Toolbar
+
+➢	If the system is having the Windows version of Wireshark and have an AirPcap adapter, then we can add decryption keys using the wireless toolbar.
+➢	If the toolbar isn't visible, you can show it by  selecting  View 🡪Wireless Toolbar.
+➢	Click on the Decryption Keys button on the toolbar:
+➢	This will open the decryption key management window. As shown in the window you can select between three decryption modes: None, Wireshark and Driver:

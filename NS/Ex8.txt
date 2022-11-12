@@ -1,0 +1,59 @@
+EX. NO: 08
+
+WORKING WITH SNORT TOOL TO DEMONSTRATE INTRUSION DETECTION SYSTEM
+
+AIM:
+
+Snort is an open source network intrusion detection system (NIDS) and it is a packet sniffer that monitors network traffic in real time.
+
+INTRODUCTION:
+
+INTRUSION DETECTION SYSTEM :
+
+Intrusion detection is a set of techniques and methods that are used to detect suspicious activity both at the network and host level. Intrusion detection systems fall into two basic categories:
+✓	Signature-based intrusion detection systems
+✓	Anomaly detection systems.
+Intruders have signatures, like computer viruses, that can be detected using software. You try to find data packets that contain any known intrusion-related signatures or anomalies related to Internet protocols. Based upon a set of signatures and rules, the detection system is able to find and log suspicious activity and generate alerts.
+
+Anomaly-based intrusion detection usually depends on packet anomalies present in protocol header parts. In some cases these methods produce better results compared to signature-based IDS. Usually an intrusion detection system captures data from the network and applies its rules to that data or detects anomalies in it. Snort is primarily a rule-based IDS, however input plug-ins are present to detect anomalies in protocol headers.
+
+SNORT TOOL:
+
+Snort is based on libpcap (for library packet capture), a tool that is widely used in TCP/IPtraffic sniffers and analyzers. Through protocolanalysis and content searching and matching, Snort detects attack methods, including denial of service, buffer overflow, CGI attacks, stealthport scans, and SMB probes. When suspicious behavior is detected, Snort sends a real-time alert to syslog, a separate 'alerts' file, or to apop-up window.
+
+Snort is currently the most popular free network intrusion detection software. The advantages of Snort are numerous. According to the snort web site, “It can perform protocol
+ 
+
+analysis, content searching/matching, and can be used to detect a variety of attacks and probes, such as buffer overflow, stealth port scans, CGI attacks, SMB probes, OS fingerprinting attempts, and much more” (Caswell).
+
+One of the advantages of Snort is its ease of configuration. Rules are very flexible, easily written, and easily inserted into the rule base. If a new exploit or attack is found a rule for the attack can be added to the rule base in a matter of seconds. Another advantage of snort is that it allows for raw packet data analysis.
+
+SNORT can be configured to run in three modes:
+1.	Sniffer mode
+2.	Packet Logger mode
+3.	Network Intrusion Detection System mode
+1.	Sniffer mode
+✓	Snort –v Print out the TCP/IP packets header on the screen
+✓	Snort –vd show the TCP/IP ICMP header with application data in transmit
+2.	Packet Logger mode
+✓	snort –dev –l c:\log [create this directory in the C drive] and snort will automatically know to go into packet logger mode, it collects every packet it sees and places it in log directory.
+✓		snort –dev –l c:\log –h ipaddress/24:This rule tells snort that you want to print out the data link and TCP/IP headers as well as application data into the log directory. snort –l c:\log –b This is binary mode logs everything into a single file.
+3.	Network Intrusion Detection System mode
+✓	snort –d c:\log –h ipaddress/24 –c snort.conf This is a configuration file applies rule to each packet to decide it an action based upon the rule type in the file.
+✓	Snort –d –h ipaddress/24 –l c:\log –c snort.conf This will cnfigure snort to run in its most basic NIDS form, logging packets that trigger rules specifies in the snort.conf.
+
+PROCEDURE:
+
+STEP-1: Sniffer mode🡪 snort –v 🡪 Print out the TCP/IP packets header on the screen.
+STEP-2: Snort –vd 🡪 Show the TCP/IP ICMP header with application data in transit.
+STEP-3: Packet Logger mode 🡪 snort –dev –l c:\log [create this directory in the C drive] and snort will automatically know to go into packet logger mode, it collects every packet it sees and places it in log directory.
+STEP-4: snort –dev –l c:\log –h ipaddress/24 🡪 This rule tells snort that you want to print out the data link and TCP/IP headers as well as application data into the log directory.
+STEP-5: snort –l c:\log –b 🡪 this binary mode logs everything into a single file.
+STEP-6: Network Intrusion Detection System mode 🡪 snort –d c:\log –h ipaddress/24 –c snort.conf 🡪 This is a configuration file that applies rule to each packet to decide it an action based upon the rule type in the file.
+STEP-7: snort –d –h ip address/24 –l c:\log –c snort.conf 🡪 This will configure snort to run in its most basic NIDS form, logging packets that trigger rules specifies in the snort.conf.
+STEP-8: Download SNORT from snort.org. Install snort with or without database support.
+STEP-9: Select all the components and Click Next. Install and Close.
+STEP-10: Skip the WinPcap driver installation.
+STEP-11: Add the path variable in windows environment variable by selecting new classpath.
+STEP-12: Create a path variable and point it at snort.exe variable name 🡪 path and variable value 🡪 c:\snort\bin.
+STEP-13: Click OK button and then close all dialog boxes. Open command prompt and type the following commands:
